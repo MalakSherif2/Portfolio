@@ -260,14 +260,26 @@
             font-size: 0.9rem;
         }
 
-        .project-dashboard-img {
+        /* Dashboard Gallery Grid */
+        .dashboard-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .dashboard-gallery img {
             width: 100%;
-            max-height: 450px;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            margin: 1.5rem 0;
-            display: block;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dashboard-gallery img:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
         }
 
         /* Skills */
@@ -486,19 +498,22 @@
                 </ul>
             </div>
 
-            <!-- Dashboard Image -->
-            <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232658.png" alt="Superstore Sales Dashboard" class="project-dashboard-img">
+            <!-- Dashboard Gallery (3 Images) -->
+            <div class="dashboard-gallery">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232625.png" alt="Superstore Overview">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232658.png" alt="Superstore Profitability Breakdown">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232739.png" alt="Superstore Product Trends">
+            </div>
 
             <div class="hero-btn-group">
                 <a href="https://github.com/MalakSherif2/Superstore_Dashboard-.git" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
-                
             </div>
         </div>
 
         <!-- Project 2: Car Sales Analytics -->
         <div class="project-card">
             <h3 class="project-title">Car Sales Analytics & Forecasting</h3>
-            <p class="project-summary">End-to-end data pipeline analyzing 500K+ vehicle transactions to identify pricing patterns and sales performance.</p>
+            <p class="project-summary">End-to-end data pipeline analyzing 500K+ vehicle transactions to identify pricing patterns, regional performance, and predictive sales forecasting.</p>
 
             <div class="project-details-grid">
                 <div class="detail-item">
@@ -520,17 +535,20 @@
                 </ul>
             </div>
 
-            <!-- Dashboard Image -->
-            <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110308.png" alt="Car Sales Analytics Dashboard" class="project-dashboard-img">
+            <!-- Dashboard Gallery (3 Images) -->
+            <div class="dashboard-gallery">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 011055.png" alt="Car Sales Overview Dashboard">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110113.png" alt="Car Sales Price Forecasting ">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110308.png" alt="Car Sales vehicle">
+                <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110137.png" alt="Car Sales Seller">
+            </div>
 
             <div class="hero-btn-group">
                 <a href="https://github.com/MalakSherif2/Car-Sales-Analysis-.git" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
-                
             </div>
         </div>
 
     </section>
-
 
     <!-- 3. Skills -->
     <section id="skills">
@@ -648,6 +666,7 @@
         </div>
 
     </section>
+
     <!-- 6. Certifications -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
