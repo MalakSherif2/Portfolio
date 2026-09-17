@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Data Analyst </title>
+    <title>Malak Sherif | Data Analyst Portfolio</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font Inter -->
@@ -25,6 +25,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -72,6 +73,13 @@
             color: var(--primary);
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
         /* Hero / About */
         .hero {
             min-height: 90vh;
@@ -92,17 +100,12 @@
             justify-content: center;
         }
 
-        .profile-img-placeholder {
+        .profile-img {
             width: 280px;
             height: 280px;
             border-radius: 50%;
-            background-color: var(--card-bg);
+            object-fit: cover;
             border: 3px solid var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
             box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
         }
 
@@ -245,34 +248,26 @@
             color: var(--text-color);
         }
 
-        .project-steps {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-steps h4, .project-insights h4 {
+        .project-insights h4 {
             font-size: 1rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
 
-        .project-steps ul, .project-insights ul {
+        .project-insights ul {
             padding-left: 1.2rem;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .project-dashboard-preview {
+        .project-dashboard-img {
             width: 100%;
-            height: 250px;
-            background-color: var(--bg-color);
-            border: 1px dashed var(--border-color);
+            max-height: 450px;
+            object-fit: contain;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
             margin: 1.5rem 0;
-            font-size: 0.9rem;
+            display: block;
         }
 
         /* Skills */
@@ -293,6 +288,9 @@
             font-size: 1.1rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .skill-group ul {
@@ -305,13 +303,13 @@
             font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
-        .skill-group li::before {
-            content: "•";
+        .skill-group li i {
             color: var(--primary);
-            font-weight: bold;
+            width: 20px;
+            text-align: center;
         }
 
         /* Experience & Certifications Lists */
@@ -321,6 +319,24 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             border-radius: 0 8px 8px 0;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .company-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #fff;
+            padding: 2px;
+            border: 2px solid var(--primary);
+            flex-shrink: 0;
         }
 
         .timeline-item h3 {
@@ -375,7 +391,24 @@
             .core-skills-badges, .hero-btn-group {
                 justify-content: center;
             }
-            .nav-links { display: none; }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--border-color);
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -384,7 +417,10 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">Malak Sherif</div>
-        <ul class="nav-links">
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-list">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -398,8 +434,8 @@
     <!-- 1. Home / About -->
     <section class="hero" id="about">
         <div class="hero-content">
-            <h1>Hi, I'm Malak</h1>
-            <h2>Data Analyst </h2>
+            <h1>Hi, I'm Malak 👋</h1>
+            <h2>Data Analyst</h2>
             <p>Passionate about turning complex raw data into actionable insights and building end-to-end analytics pipelines to drive strategic business decisions.</p>
             
             <div class="core-skills-badges">
@@ -412,285 +448,284 @@
             <div class="hero-btn-group">
                 <a href="https://www.linkedin.com/in/malak-sherif-b03138357?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/MalakSherif2" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                
             </div>
         </div>
 
         <div class="hero-image-container">
-            <!-- Profile Picture Placeholder -->
-            <div class="profile-img-placeholder">
-                <p>[ "C:\Users\malak\Pictures\Camera Roll\WhatsApp Image 2025-08-30 at 23.48.32_46598162.jpg" ]</p>
-            </div>
+            <!-- Profile Picture -->
+            <img src="C:\Users\malak\Pictures\Camera Roll\WhatsApp Image 2025-08-30 at 23.48.32_46598162.jpg" alt="Malak Sherif" class="profile-img">
         </div>
     </section>
 
     <!-- 2. Projects -->
-<section id="projects">
-    <h2 class="section-title">Key Projects</h2>
+    <section id="projects">
+        <h2 class="section-title">Key Projects</h2>
 
-    <!-- Project 1: Superstore Excel Dashboard -->
-    <div class="project-card">
-        <h3 class="project-title">Superstore Sales & Profitability Analysis</h3>
-        <p class="project-summary">Interactive Excel dashboard analyzing sales performance, profit margins, and regional trends for a retail superstore.</p>
+        <!-- Project 1: Superstore Excel Dashboard -->
+        <div class="project-card">
+            <h3 class="project-title">Superstore Sales & Profitability Analysis</h3>
+            <p class="project-summary">Interactive Excel dashboard analyzing sales performance, profit margins, and regional trends for a retail superstore.</p>
 
-        <div class="project-details-grid">
-            <div class="detail-item">
-                <h4>Dataset</h4>
-                <p>Retail transaction dataset (Sales, Profits, Categories, Regions).</p>
+            <div class="project-details-grid">
+                <div class="detail-item">
+                    <h4>Dataset</h4>
+                    <p>Retail transaction dataset (Sales, Profits, Categories, Regions).</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Tools Used</h4>
+                    <p>Advanced Excel, Power Query, Pivot Tables, Dynamic Dashboards</p>
+                </div>
             </div>
-            <div class="detail-item">
-                <h4>Tools Used</h4>
-                <p>Advanced Excel, Power Query, Pivot Tables, Dynamic Dashboards</p>
+
+            <div class="project-insights">
+                <h4>Key Insights:</h4>
+                <ul>
+                    <li>Identified loss-making sub-categories despite high sales volume.</li>
+                    <li>Highlighted top 10 customers driving 35% of total store profits.</li>
+                    <li>Tracked regional growth and seasonal sales spikes across quarters.</li>
+                </ul>
+            </div>
+
+            <!-- Dashboard Image -->
+            <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232658.png" alt="Superstore Sales Dashboard" class="project-dashboard-img">
+
+            <div class="hero-btn-group">
+                <a href="https://github.com/MalakSherif2/Superstore_Dashboard-.git" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
+                
             </div>
         </div>
 
-        <div class="project-insights">
-            <h4>Key Insights:</h4>
-            <ul>
-                <li>Identified loss-making sub-categories despite high sales volume.</li>
-                <li>Highlighted top 10 customers driving 35% of total store profits.</li>
-                <li>Tracked regional growth and seasonal sales spikes across quarters.</li>
+        <!-- Project 2: Car Sales Analytics -->
+        <div class="project-card">
+            <h3 class="project-title">Car Sales Analytics & Forecasting</h3>
+            <p class="project-summary">End-to-end data pipeline analyzing 500K+ vehicle transactions to identify pricing patterns and sales performance.</p>
+
+            <div class="project-details-grid">
+                <div class="detail-item">
+                    <h4>Dataset</h4>
+                    <p>500K+ vehicle transaction records.</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Tools Used</h4>
+                    <p>Python, SQL Server, Power BI, Scikit-learn</p>
+                </div>
+            </div>
+
+            <div class="project-insights">
+                <h4>Key Insights:</h4>
+                <ul>
+                    <li>SUVs accounted for 42% of total revenue growth year-over-year.</li>
+                    <li>Regional pricing analysis revealed a 12% untapped margin potential.</li>
+                    <li>Built a ML forecasting model predicting seller price trends.</li>
+                </ul>
+            </div>
+
+            <!-- Dashboard Image -->
+            <img src="C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110308.png" alt="Car Sales Analytics Dashboard" class="project-dashboard-img">
+
+            <div class="hero-btn-group">
+                <a href="https://github.com/MalakSherif2/Car-Sales-Analysis-.git" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
+                
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- 3. Skills -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-categories">
+            
+            <div class="skill-group">
+                <h3><i class="fas fa-chart-pie"></i> Data Analysis</h3>
+                <ul>
+                    <li><i class="fab fa-python"></i> Python</li>
+                    <li><i class="fas fa-code"></i> Pandas & NumPy</li>
+                    <li><i class="fas fa-database"></i> SQL</li>
+                    <li><i class="fas fa-file-excel"></i> Advanced Excel</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-chart-line"></i> Visualization</h3>
+                <ul>
+                    <li><i class="fas fa-chart-bar"></i> Power BI</li>
+                    <li><i class="fas fa-cubes"></i> Tableau</li>
+                    <li><i class="fas fa-palette"></i> Matplotlib / Seaborn</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-server"></i> Databases & DW</h3>
+                <ul>
+                    <li><i class="fas fa-database"></i> SQL Server</li>
+                    <li><i class="fas fa-sitemap"></i> Data Warehousing</li>
+                    <li><i class="fas fa-project-diagram"></i> Star / Galaxy Schema</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-robot"></i> Machine Learning</h3>
+                <ul>
+                    <li><i class="fas fa-brain"></i> Scikit-learn</li>
+                    <li><i class="fas fa-bolt"></i> XGBoost</li>
+                    <li><i class="fas fa-project-diagram"></i> Regression & Clustering</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-tools"></i> Developer Tools</h3>
+                <ul>
+                    <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
+                    <li><i class="fas fa-book-open"></i> Jupyter Notebook</li>
+                    <li><i class="fas fa-laptop-code"></i> VS Code</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. Education -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline-item">
+            <div class="company-header">
+                <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--card-bg); border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h3>Bachelor’s Degree in Computer Science & Statistics</h3>
+                    <div class="timeline-date"><i class="fas fa-university"></i> Faculty of Science</div>
+                </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                Focused on Database Management Systems, Data Structures, Applied Statistics, Linear Algebra, and Machine Learning Fundamentals.
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. Experience / Training -->
+    <section id="experience">
+        <h2 class="section-title">Experience & Training</h2>
+
+        <!-- DEPI Training -->
+        <div class="timeline-item">
+            <div class="company-header">
+                <img src="C:\Users\malak\Downloads\Screenshot_17-9-2026_44246_www.bing.com.jpeg" alt="DEPI Logo" class="company-icon" onerror="this.src='https://via.placeholder.com/45?text=DEPI'">
+                <div>
+                    <h3>Data Science & AI Trainee — DEPI Program</h3>
+                    <div class="timeline-date"><i class="far fa-calendar-alt"></i> 6 Months</div>
+                </div>
+            </div>
+            
+            <h4 style="color: var(--primary); font-size: 0.95rem; margin: 0.5rem 0 0.3rem 0;">Car Sales Forecasting Project</h4>
+            <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+                <li>Performed comprehensive Data Cleaning & Preprocessing.</li>
+                <li>Conducted Exploratory Data Analysis (EDA) to identify trends and seasonality.</li>
+                <li>Engineered features to improve model performance.</li>
+                <li>Built and compared multiple Machine Learning models (Linear Regression, XGBoost, etc.).</li>
+                <li>Collaborated within a team environment and contributed to final presentation & insights.</li>
             </ul>
         </div>
 
-        <!-- Dashboard Image Placeholder -->
-        <div class="project-dashboard-preview">
-            <p>["C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-15 232658.png" ]</p>
-        </div>
-
-        <div class="hero-btn-group">
-            <a href="https://github.com" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
-            <a href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View Sheet</a>
-        </div>
-    </div>
-
-    <!-- Project 2: Car Sales Analytics -->
-    <div class="project-card">
-        <h3 class="project-title">Car Sales Analytics & Forecasting</h3>
-        <p class="project-summary">End-to-end data pipeline analyzing 500K+ vehicle transactions to identify pricing patterns and sales performance.</p>
-
-        <div class="project-details-grid">
-            <div class="detail-item">
-                <h4>Dataset</h4>
-                <p>500K+ vehicle transaction records.</p>
+        <!-- ITI Training -->
+        <div class="timeline-item">
+            <div class="company-header">
+                <img src="C:\Users\malak\Pictures\Camera Roll\Screenshot_3-9-2026_182739_www.bing.com.jpeg" alt="ITI Logo" class="company-icon" onerror="this.src='https://via.placeholder.com/45?text=ITI'">
+                <div>
+                    <h3>Data Analytics Intensive Trainee — ITI (Information Technology Institute)</h3>
+                    <div class="timeline-date"><i class="far fa-calendar-alt"></i> 1 Month Training</div>
+                </div>
             </div>
-            <div class="detail-item">
-                <h4>Tools Used</h4>
-                <p>Python, SQL Server, Power BI, Scikit-learn</p>
-            </div>
-        </div>
 
-        <div class="project-insights">
-            <h4>Key Insights:</h4>
-            <ul>
-                <li>SUVs accounted for 42% of total revenue growth year-over-year.</li>
-                <li>Regional pricing analysis revealed a 12% untapped margin potential.</li>
-                <li>Built a ML forecasting model predicting seller price trends.</li>
+            <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                <li>Designed and queried relational databases using advanced SQL & SQL Server.</li>
+                <li>Built enterprise Data Warehousing solutions utilizing Star & Snowflake Schema architectures.</li>
+                <li>Developed dynamic business dashboards using Power BI & Tableau for key metrics visualization.</li>
+                <li>Utilized Advanced Excel for statistical data manipulation, Data Cleaning, and Pivot reporting.</li>
             </ul>
         </div>
 
-        <!-- Dashboard Image Placeholder -->
-        <div class="project-dashboard-preview">
-            <p>[ "C:\Users\malak\Pictures\Screenshots\Screenshot 2026-09-04 110308.png"]</p>
-        </div>
-
-        <div class="hero-btn-group">
-            <a href="https://github.com/MalakSherif2/Car-Sales-Analysis-.git" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> Repository</a>
-            <a href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Dashboard</a>
-        </div>
-    </div>
-
-</section>
-
-    <!-- 3. Skills with Icons -->
-<section id="skills">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-categories">
-        
-        <div class="skill-group">
-            <h3><i class="fas fa-chart-pie"></i> Data Analysis</h3>
-            <ul>
-                <li><i class="fab fa-python"></i> Python</li>
-                <li><i class="fas fa-code"></i> Pandas & NumPy</li>
-                <li><i class="fas fa-database"></i> SQL</li>
-                <li><i class="fas fa-file-excel"></i> Advanced Excel</li>
-            </ul>
-        </div>
-
-        <div class="skill-group">
-            <h3><i class="fas fa-chart-line"></i> Visualization</h3>
-            <ul>
-                <li><i class="fas fa-chart-bar"></i> Power BI</li>
-                <li><i class="fas fa-cubes"></i> Tableau</li>
-                <li><i class="fas fa-palette"></i> Matplotlib / Seaborn</li>
-            </ul>
-        </div>
-
-        <div class="skill-group">
-            <h3><i class="fas fa-server"></i> Databases & DW</h3>
-            <ul>
-                <li><i class="fas fa-database"></i> SQL Server</li>
-                <li><i class="fas fa-sitemap"></i> Data Warehousing</li>
-                <li><i class="fas fa-project-diagram"></i> Star / Galaxy Schema</li>
-            </ul>
-        </div>
-
-        <div class="skill-group">
-            <h3><i class="fas fa-robot"></i> Machine Learning</h3>
-            <ul>
-                <li><i class="fas fa-brain"></i> Scikit-learn</li>
-                <li><i class="fas fa-bolt"></i> XGBoost</li>
-                <li><i class="fas fa-project-diagram"></i> Regression & Clustering</li>
-            </ul>
-        </div>
-
-        <div class="skill-group">
-            <h3><i class="fas fa-tools"></i> Developer Tools</h3>
-            <ul>
-                <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
-                <li><i class="fas fa-book-open"></i> Jupyter Notebook</li>
-                <li><i class="fas fa-laptop-code"></i> VS Code</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-<!-- Education -->
-<section id="education">
-    <h2 class="section-title">Education</h2>
-    <div class="timeline-item">
-        <div class="company-header">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--card-bg); border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
-                <i class="fas fa-graduation-cap"></i>
+    </section>
+    <!-- 6. Certifications -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-list">
+            
+            <div class="cert-card">
+                <div>
+                    <h4>Data Science & AI Intern</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+                        Digital Egypt Pioneers Initiative (DEPI)
+                    </p>
+                </div>
+                <a href="DEPI certified.jpeg" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
+                    <i class="fas fa-certificate"></i> Verify
+                </a>
             </div>
-            <div>
-                <h3>Bachelor’s Degree in Computer Science & Statistics</h3>
-                <div class="timeline-date"><i class="fas fa-university"></i> Faculty of Science</div>
+
+            <div class="cert-card">
+                <div>
+                    <h4>Computer Vision</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+                        National Telecommunication Institute (NTI)
+                    </p>
+                </div>
+                <a href="C:\Users\malak\Desktop\My Certificates\WhatsApp Image 2026-09-17 at 4.45.21 AM.jpeg" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
+                    <i class="fas fa-certificate"></i> Verify
+                </a>
             </div>
-        </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Focused on Database Management Systems, Data Structures, Applied Statistics, Linear Algebra, and Machine Learning Fundamentals.
-        </p>
-    </div>
-</section>
-    <!-- 4. Experience / Training -->
-<section id="experience">
-    <h2 class="section-title">Experience & Training</h2>
 
-    <!-- DEPI Training -->
-    <div class="timeline-item">
-        <div class="company-header">
-            <!-- Replace 'depi-logo.png' with your local or online DEPI logo image path -->
-            <img src="depi-logo.png" alt="DEPI Logo" class="company-icon" onerror="this.src='https://via.placeholder.com/45?text=DEPI'">
-            <div>
-                <h3>Data Science & AI Trainee — DEPI Program</h3>
-                <div class="timeline-date"><i class="far fa-calendar-alt"></i> 6 Months</div>
+            <div class="cert-card">
+                <div>
+                    <h4>Data Analyst Certificate</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+                        Instant Software Solution
+                    </p>
+                </div>
+                <a href="C:\Users\malak\Desktop\My Certificates\WhatsApp Image 2026-09-17 at 4.46.37 AM.jpeg" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
+                    <i class="fas fa-certificate"></i> Verify
+                </a>
             </div>
-        </div>
-        
-        <h4 style="color: var(--primary); font-size: 0.95rem; margin: 0.5rem 0 0.3rem 0;">Car Sales Forecasting Project</h4>
-        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
-            <li>Performed comprehensive Data Cleaning & Preprocessing.</li>
-            <li>Conducted Exploratory Data Analysis (EDA) to identify trends and seasonality.</li>
-            <li>Engineered features to improve model performance.</li>
-            <li>Built and compared multiple Machine Learning models (Linear Regression, XGBoost, etc.).</li>
-            <li>Collaborated within a team environment and contributed to final presentation & insights.</li>
-        </ul>
-    </div>
 
-    <!-- ITI Training -->
-    <div class="timeline-item">
-        <div class="company-header">
-            <!-- Replace 'iti-logo.png' with your local or online ITI logo image path -->
-            <img src="iti-logo.png" alt="ITI Logo" class="company-icon" onerror="this.src='https://via.placeholder.com/45?text=ITI'">
-            <div>
-                <h3>Data Analytics Intensive Trainee — ITI (Information Technology Institute)</h3>
-                <div class="timeline-date"><i class="far fa-calendar-alt"></i> 1 Month Training</div>
+            <div class="cert-card">
+                <div>
+                    <h4>Data Analysis Internship Certificate</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+                        Uneeq Intern
+                    </p>
+                </div>
+                <a href="C:\Users\malak\Desktop\My Certificates\Uneeq.pdf" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
+                    <i class="fas fa-certificate"></i> Verify
+                </a>
             </div>
+
         </div>
+    </section>
 
-        <ul style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
-            <li>Designed and queried relational databases using advanced SQL & SQL Server.</li>
-            <li>Built enterprise Data Warehousing solutions utilizing Star & Snowflake Schema architectures.</li>
-            <li>Developed dynamic business dashboards using Power BI & Tableau for key metrics visualization.</li>
-            <li>Utilized Advanced Excel for statistical data manipulation, Data Cleaning, and Pivot reporting.</li>
-        </ul>
-    </div>
-
-</section>
-
-    <!-- 5. Certifications -->
-<section id="certifications">
-    <h2 class="section-title">Certifications</h2>
-    <div class="cert-list">
-        
-        <!-- DEPI Certificate -->
-        <div class="cert-card">
-            <div>
-                <h4>Data Science & AI Intern </h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
-                    Digital Egypt Pioneers Initiative (DEPI)
-                </p>
-            </div>
-            <a href="#" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
-                <i class="fas fa-external-link-alt"></i> Verify
-            </a>
-        </div>
-
-        <!-- NTI Computer Vision Certificate -->
-        <div class="cert-card">
-            <div>
-                <h4>Computer Vision </h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
-                    National Telecommunication Institute (NTI)
-                </p>
-            </div>
-            <a href="#" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
-                <i class="fas fa-external-link-alt"></i> Verify
-            </a>
-        </div>
-
-        <!-- Instant Software Certificate -->
-        <div class="cert-card">
-            <div>
-                <h4>Data Analyst Certificate</h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
-                    Instant Software Solution
-                </p>
-            </div>
-            <a href="#" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
-                <i class="fas fa-external-link-alt"></i> Verify
-            </a>
-        </div>
-
-        <!-- Uneeq Intern Certificate -->
-        <div class="cert-card">
-            <div>
-                <h4>Data Analysis Internship Certificate</h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
-                    Uneeq Intern
-                </p>
-            </div>
-            <a href="#" target="_blank" class="btn btn-secondary" style="padding:0.4rem 0.8rem; font-size:0.8rem;">
-                <i class="fas fa-external-link-alt"></i> Verify
-            </a>
-        </div>
-
-    </div>
-</section>
-    <!-- 6. Contact -->
+    <!-- 7. Contact -->
     <section id="contact">
         <div class="contact-container">
-            <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Let's Connect</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Let's Connect 💫</h2>
             <p style="color: var(--text-muted);">Feel free to reach out for opportunities or collaboration!</p>
             
             <div class="contact-links">
-                <a href="malaksherif375@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
-                <a href="https://www.linkedin.com/in/malak-sherif-b03138357?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:malaksherif375@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+                <a href="https://www.linkedin.com/in/malak-sherif-b03138357" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/MalakSherif2" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
     </section>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
